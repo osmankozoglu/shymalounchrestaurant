@@ -27,23 +27,19 @@ export default function Subelerimiz() {
 
   async function sendToMail(data) {
     setStatus("")
-    axios.post("https://shymalounch-backend.vercel.app/send", {
+    await axios.post("https://shymalounch-backend.vercel.app/send", {
         name: data.name,
         email: data.email,
         message: data.subject,
         phone: data.phone,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json', 
-          'Access-Control-Allow-Origin': '*',
-        }
       }
     )
       .then((response) => {
+        console.log(response);
         setStatus("Mesajınız gönderilmiştir.");
       })
       .catch((error) => {
+        console.log(error);
         setStatus("Mesajınız gönderilemedi. Daha sonra tekrar deneyiniz.");
       });
   }
