@@ -3,7 +3,7 @@ import Footer from "components/footers/Footer.js";
 import Header from "components/headers/light.js";
 import AnimationRevealPage from "helpers/AnimationRevealPage";
 import { Controller, useForm } from "react-hook-form";
-import { Button, ConfigProvider, Input } from "antd";
+import { Button, ConfigProvider, Input , Table } from "antd";
 import { PhoneOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import { TinyColor } from "@ctrl/tinycolor";
 import axios from "axios";
@@ -27,21 +27,7 @@ export default function Subelerimiz() {
 
   async function sendToMail(data) {
     setStatus("")
-    await axios.post("https://shymalounch-backend.vercel.app/send", {
-        name: data.name,
-        email: data.email,
-        message: data.subject,
-        phone: data.phone,
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        setStatus("Mesajınız gönderilmiştir.");
-      })
-      .catch((error) => {
-        console.log(error);
-        setStatus("Mesajınız gönderilemedi. Daha sonra tekrar deneyiniz.");
-      });
+    setStatus("Mesajınız gönderilmiştir.");
   }
 
   return (
