@@ -8,6 +8,9 @@ const port = 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.options('*', cors({
+  optionsSuccessStatus: 200
+}));
 
 app.post('/send', (req, res) => {
   const { name, email, message, phone } = req.body;
