@@ -7,10 +7,10 @@ const app = express();
 const port = 5000;
 
 app.use(cors());
-app.use(express.json())
+app.use(bodyParser.json());
 
 app.post('/send', (req, res) => {
-  const { name, email, message ,phone } = req.body;
+  const { name, email, message, phone } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
