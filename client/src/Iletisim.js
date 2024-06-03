@@ -32,6 +32,12 @@ export default function Subelerimiz() {
         email: data.email,
         message: data.subject,
         phone: data.phone,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        }
       }
     )
       .then((response) => {
