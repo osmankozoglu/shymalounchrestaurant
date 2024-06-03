@@ -6,11 +6,14 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
-app.use(cors());
 app.use(bodyParser.json());
-app.options('*', cors({
-  optionsSuccessStatus: 200
-}));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 app.post('/send', (req, res) => {
   const { name, email, message, phone } = req.body;
